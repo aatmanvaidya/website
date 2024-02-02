@@ -7,14 +7,17 @@ date: 2024-01-06
 tags: profiling
 ---
 
-This blog is a result of a [spike](https://github.com/tattle-made/feluda/issues/42) exploring python code profiling. I will list down all the tools/libraries/methods tested around profiling python code. 
+This blog is a result of a [spike](https://github.com/tattle-made/feluda/issues/42) exploring python code profiling. I will list down all the tools/libraries/methods tested around profiling python code.
 
 ### What is Code Profiling?
-Code profiling is a method that is used to detect how long each function or line of code takes 
-to run and how often it gets executed. Along with time, we can also profile memory and see how much RAM a line of code/ function takes to run. 
+
+Code profiling is a method that is used to detect how long each function or line of code takes
+to run and how often it gets executed. Along with time, we can also profile memory and see how much RAM a line of code/function takes to run.
 
 ### Code that we will use for profiling
-As we test out different tools/libraries/methods, I will use Tesseract OCR code for testing purposes. [Tesseract](https://github.com/tesseract-ocr/tesseract) is an OCR enginer that can help detect text from an inmage in more than 100 langauges. Below is a code snippet on how to use Tesseract.
+
+As we test out different tools/libraries/methods, I will use Tesseract OCR code for testing purposes. [Tesseract](https://github.com/tesseract-ocr/tesseract) is an OCR engine that can help detect text from an image in more than 100 languages. Below is a code snippet on how to use Tesseract.
+
 ```
 import pytesseract
 from PIL import Image
@@ -24,6 +27,12 @@ data = pytesseract.image_to_string(image_path, lang='eng+hin', config='--psm 6 -
 print(data)
 ```
 
-We want to profile this code and also do laod testing for it. 
+We want to profile this code and also do load testing for it. Lets begin with profiling now.
 
+## Code Profiling
 
+### CProfile
+
+`cProfile` is an in-built python library, that helps you profile python code. [cProfile](https://docs.python.org/3/library/profile.html#:~:text=cProfile%20and%20profile%20provide%20deterministic,reports%20via%20the%20pstats%20module.) and profile provide deterministic profiling of Python programs
+
+Lets say you want to profile a function, so first you have to initiate a 
